@@ -19,6 +19,11 @@ var numUsers = 0;
 
 io.on('connection', function (socket) {
   var addedUser = false;
+  
+  // For DEMO compatibility  
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
 
   // when the client emits 'new message', this listens and executes
   socket.on('new message', function (data) {
